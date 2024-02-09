@@ -1,0 +1,51 @@
+{% include 'header.html' %}
+<style type="text/css">
+  .user {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .welcome-message{
+    margin-bottom: 20px;
+  }
+  .subjects ul {
+    list-style-type: none;
+  }
+  .subjects li {
+    margin-bottom: 10px;
+  }
+  .subjects a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  .subjects a:hover {
+    background-color: #0069d9;
+  }
+</style>
+<div class="container">
+  <div class="user">
+  <h1 class="title">Welcome,{{name}}!</h1>
+    </div>
+</div>
+<div class="welcome-message">
+  <p>Welcome to the subject page! Here are the available subjects:</p>
+</div>
+
+<div class="subjects">
+  <ul>
+    <li><a href="{{url_for('english')}}" class="btn btn-outline-primary">English Language</a></li>
+    <li><a href="{{url_for('mathematics')}}" class="btn btn-outline-primary">Mathematics</a></li>
+    <li><a href="{{url_for('science')}}" class="btn btn-outline-primary">Integrated Science</a></li>
+    <li> <a href="{{url_for('social')}}" class="btn btn-outline-primary">Social Studies</a></li>
+    <li><a href="{{url_for('computing')}}" class="btn btn-outline-primary">Computing</a></li>
+    <li><a href="{{url_for('rme')}}" class="btn btn-outline-primary">Religious And Moral Education</a></li>
+    <li><a href="{{url_for('career_tech')}}" class="btn btn-outline-primary">Career Technology</a></li>
+    <li><a href="{{url_for('cad')}}" class="btn btn-outline-primary">Creative Arts And Design</a></li>
+    <li><a href="{{url_for('fante')}}" class="btn btn-outline-primary">Ghanaian Language</a></li>
+  </ul>
+</div>
+
+{% include 'footer.html' %}

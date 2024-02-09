@@ -1,0 +1,172 @@
+{% include 'header.html' %}
+<style>
+  .user {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .school {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  .welcome-message {
+    margin-bottom: 20px;
+  }
+  .teacher-table {
+    margin-bottom: 40px;
+  }
+  .student-table {
+    margin-bottom: 40px;
+  }
+  .table thead tr:nth-child(even){
+    background-color: #f2f2f2;
+  }
+</style>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<div class="container">
+        <div class="user">
+          <h2>Welcome, {{current_user.name}}</h2>
+        </div>
+      </div>
+      <div class="school">
+        <h3>Commonwealth Preparatory School</h3>
+      </div>
+      <div class="welcome-message">
+        <p>Welcome to the Religious and Moral Education  Dashboard! You have access to manage the school's  Religous and Moral Education Performance </p>
+      </div>   
+
+
+      <section class="student-table">
+      <h2>JHS 1 Religious And Moral Education Assessment Table</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+                <th scope="col">Student ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">ClassTest (20%)</th>
+                <th scope="col">Midterm Examination (50%)</th>
+                <th scope="col">Project Work(30%)</th>
+                <th scope="col">Sub-Total Of Class Work(100%)</th>
+                <th scope="col">End of Term Examination(100%)</th>
+                <th scope="col">50% ClassWork</th>
+                <th scope="col">50% Examination</th>
+                <th scope="col">Grand Total</th>
+                <th scope="col">Position</th>
+              <th scope="col">Edit Student Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for student in form_1 %}
+            <tr>
+              <td>{{student.id}}</td>
+              <td>{{student.full_name}}</td>
+              <td>{{student.classtest}}</td>
+              <td>{{student.midterm_examination}}</td>
+              <td>{{student.project_work}}</td>
+              <td>{{student.subtotal}}</td>
+              <td>{{student.end_of_term_examination}}</td>
+              <td>{{student.half_subtotal}}</td>
+                <td>{{student.half_examination}}</td>
+                <td>{{student.grand_total}}</td>
+              <td>{{student.ranking}}</td>
+              <td><a href="{{url_for('edit_jhs1_rme_student', index=student.id)}}">Edit</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="student-table">
+      <h2>JHS 2 Religious And Moral Education Assessment Table</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+                <th scope="col">Student ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">ClassTest (20%)</th>
+                <th scope="col">Midterm Examination (50%)</th>
+                <th scope="col">Project Work(30%)</th>
+                <th scope="col">Sub-Total Of Class Work(100%)</th>
+                <th scope="col">End of Term Examination(100%)</th>
+                <th scope="col">50% ClassWork</th>
+                <th scope="col">50% Examination</th>
+                <th scope="col">Grand Total</th>
+                <th scope="col">Position</th>
+              <th scope="col">Edit Student Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for student in form_2 %}
+            <tr>
+              <td>{{student.id}}</td>
+              <td>{{student.full_name}}</td>
+              <td>{{student.classtest}}</td>
+              <td>{{student.midterm_examination}}</td>
+              <td>{{student.project_work}}</td>
+              <td>{{student.subtotal}}</td>
+              <td>{{student.end_of_term_examination}}</td>
+              <td>{{student.half_subtotal}}</td>
+                <td>{{student.half_examination}}</td>
+                <td>{{student.grand_total}}</td>
+              <td>{{student.ranking}}</td>
+              <td><a href="{{url_for('edit_jhs2_rme_student', index=student.id)}}">Edit Student</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="student-table">
+      <h2>JHS 3 Religious And Moral Education Assessment Table</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+                <th scope="col">Student ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">ClassTest (20%)</th>
+                <th scope="col">Midterm Examination (50%)</th>
+                <th scope="col">Project Work(30%)</th>
+                <th scope="col">Sub-Total Of Class Work(100%)</th>
+                <th scope="col">End of Term Examination(100%)</th>
+                <th scope="col">50% ClassWork</th>
+                <th scope="col">50% Examination</th>
+                <th scope="col">Grand Total</th>
+                <th scope="col">Position</th>
+              <th scope="col">Edit Student Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for student in form_3 %}
+            <tr>
+              <td>{{student.id}}</td>
+              <td>{{student.full_name}}</td>
+              <td>{{student.classtest}}</td>
+              <td>{{student.midterm_examination}}</td>
+              <td>{{student.project_work}}</td>
+              <td>{{student.subtotal}}</td>
+              <td>{{student.end_of_term_examination}}</td>
+              <td>{{student.half_subtotal}}</td>
+                <td>{{student.half_examination}}</td>
+                <td>{{student.grand_total}}</td>
+              <td>{{student.ranking}}</td>
+              <td><a href="{{url_for('edit_jhs3_rme_student', index=student.id)}}">Edit</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    </main>
+  </div>
+</div>
+
+{% include 'footer.html'%}

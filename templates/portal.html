@@ -1,0 +1,31 @@
+    {% include 'header.html' %}
+
+
+    <div class="box">
+    <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Welcome to the Teacher's Portal</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    </header>
+
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+       <a href="{{url_for('register_teaching_staff')}}" class="btn btn-primary btn-block btn-large">Register</a>
+        <a href="{{url_for('teaching_staff')}}" class="btn btn-secondary btn-block btn-large">Login</a>
+
+
+      </div>
+    </div>
+    </div>
+    </div>
+
+    {% include 'footer.html' %}
