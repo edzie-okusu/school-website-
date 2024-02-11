@@ -11,6 +11,8 @@ class NewStudentForm(FlaskForm):
     mother_number = StringField("'Mother's Number", validators=[DataRequired()])
     date_of_birth = StringField("Date of Birth", validators=[DataRequired()])
     current_class = StringField("Class Registered To", validators=[DataRequired()])
+    fees = StringField('School Fees', validators=[DataRequired()])
+    paid = StringField('School Fees Amount Paid', validators=[DataRequired()])
     submit = SubmitField("Add Student")
 
 
