@@ -441,7 +441,7 @@ class ThirdTermJHS3IntegratedScience(UserMixin, db.Model):
     ranking = db.Column(db.Integer, nullable=True)
     teacher_id = db.Column(db.Integer, db.ForeignKey('jhs_3_class_teacher.id'))
     teacher = relationship('JHS3Teacher',
-                           backref=db.backref('Second Term JHS 3 Integrated Science Assessment', lazy=True))
+                           backref=db.backref('Third Term JHS 3 Integrated Science Assessment', lazy=True))
 
 
 class FirstTermJHS1SocialStudies(UserMixin, db.Model):
@@ -1854,7 +1854,7 @@ def load_user(user_id):
 
 
 # route to render html pages of websites
-@app.route('/home')
+@app.route('/')
 def home():
     return render_template('index.html', current_user=current_user)
 
@@ -1992,7 +1992,7 @@ def new_student():
             current_class=grade,
             school_fees=school_fees,
             amount_paid=amount_paid,
-            school_fees_debt=int(school_fees - amount_paid)
+            school_fees_debt= float(school_fees) - float(amount_paid)
         )
         db.session.add(new_jhs_student)
         db.session.commit()
@@ -2580,35 +2580,6 @@ def edit_third_term_jhs2_english_student(index):
     return render_template('student_assessment.html', form=form)
 
 
-@app.route('/first-term-jhs-3-english-student-assessment/<int:index>', methods=['GET', 'POST'])
-@login_required
-def edit_first_term_jhs3_english_student(index):
-    student_id = index
-    form_3_student = FirstTermJHS3EnglishLanguage.query.filter_by(id=student_id).first()
-    form = StudentAssessmentForm()
-    if form.validate_on_submit():
-        if form_3_student:
-            class_test = form.classtest.data
-            mid_terms = form.midterms.data
-            project_work = form.project_work.data
-            examination = form.examinations.data
-            form_3_student.classtest = class_test
-            form_3_student.midterm_examination = mid_terms
-            form_3_student.project_work = project_work
-            form_3_student.end_of_term_examination = examination
-            form_3_student.subtotal = float(class_test) + float(mid_terms) + float(project_work)
-            form_3_student.half_subtotal = (float(class_test) + float(mid_terms) + float(project_work)) / 2
-            form_3_student.half_examination = float(examination) / 2
-            form_3_student.grand_total = ((float(class_test) + float(mid_terms) + float(project_work)) / 2) + (
-                    float(examination) / 2)
-            db.session.add(form_3_student)
-            db.session.commit()
-            return redirect(url_for('english'))
-        else:
-            flash('Student not found!')
-
-    return render_template('student_assessment.html', form=form)
-
 
 @app.route('/first-term-jhs-3-english-student-assessment/<int:index>', methods=['GET', 'POST'])
 @login_required
@@ -3142,7 +3113,7 @@ def edit_first_term_jhs2_science_student(index):
 
 @app.route('/second-term-jhs-2-science-student-assessment/<int:index>', methods=['GET', 'POST'])
 @login_required
-def edit_first_term_jhs2_science_student(index):
+def edit_second_term_jhs2_science_student(index):
     student_id = index
     form_2_student = SecondTermJHS2IntegratedScience.query.filter_by(id=student_id).first()
     form = StudentAssessmentForm()
@@ -4632,7 +4603,7 @@ def edit_second_term_jhs2_career_tech_student(index):
 
 @app.route('/third-term-jhs-2-career-tech-student-assessment/<int:index>', methods=['GET', 'POST'])
 @login_required
-def edit_first_term_jhs2_career_tech_student(index):
+def edit_third_term_jhs2_career_tech_student(index):
     student_id = index
     form_2_student = ThirdTermJHS2CareerTechnology.query.filter_by(id=student_id).first()
     form = StudentAssessmentForm()
